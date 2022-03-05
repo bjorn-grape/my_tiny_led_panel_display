@@ -1,0 +1,6 @@
+[submodule "3rdparty/rpi-rgb-led-matrix"]
+	path = 3rdparty/rpi-rgb-led-matrix
+	url = https://github.com/hzeller/rpi-rgb-led-matrix
+[submodule "3rdparty/cpp-httplib"]
+	path = 3rdparty/cpp-httplib
+	url = https://github.com/yhirose/cpp-httplib
