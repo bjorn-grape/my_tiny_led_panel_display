@@ -19,6 +19,6 @@ add_library(rpi_rgb_led_matrix SHARED
 	../3rdparty/rpi-rgb-led-matrix/lib/hardware-mapping.c
 	)
 
-add_executable(raspi_led main.cpp)
+add_executable(raspi_led main.cpp MatrixHandler.cpp)
 
 target_link_libraries(raspi_led rpi_rgb_led_matrix pthread rt m)

@@ -1,4 +1,5 @@
 #pragma once
+#include <led-matrix.h>
 #include <memory>
 
 enum DisplayType{
@@ -17,8 +18,8 @@ public:
     auto set_display_type(DisplayType dt) -> void;
 
 private:
-    std::shared_ptr<RGBMatrix> canvas_;
-    SelectedDisplay s_display = DisplayType::DEFAULT;
+    std::shared_ptr<rgb_matrix::RGBMatrix> canvas_;
+    DisplayType s_display = DisplayType::DEFAULT;
     bool is_init_ = false;
 };
 
