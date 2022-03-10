@@ -1,5 +1,6 @@
 #pragma once
-
+#include <memory>
+#include <led-matrix.h>
 typedef std::shared_ptr<rgb_matrix::RGBMatrix> canvas_ptr;
 
 class Page {

@@ -24,14 +24,14 @@ auto MatrixHandler::init(int argc, char **argv) -> bool {
     canvas_ = std::shared_ptr<rgb_matrix::RGBMatrix>(tmp_ptr);
     pmap_["ip"] = std::make_shared<IPPage>(canvas_);
     pmap_["time"] = std::make_shared<TimePage>(canvas_);
-    for (auto elm& : pmap_)
+    for (auto &elm : pmap_)
     elm.second->init();
     is_init_ = true;
     return true;
 }
 
 auto MatrixHandler::draw() -> void {
-    if (!pmap_.contains(page_name_)) {
+    if (!pmap_.count(page_name_)) {
         canvas_->Fill(255, 255, 255);
         return;
     }
@@ -48,7 +48,7 @@ auto MatrixHandler::stop() -> void {
 }
 
 auto MatrixHandler::set_page_name(const std::string &name) -> bool {
-    if (!pmap_.contains(name))
+    if (!pmap_.count(name))
         return false;
     page_name_ = name;
     return true;

@@ -6,6 +6,7 @@ project(raspi_led)
 include_directories(
 		../3rdparty/rpi-rgb-led-matrix/include
 		../3rdparty/cpp-httplib/
+		./pages/
 )
 add_library(rpi_rgb_led_matrix SHARED
 	../3rdparty/rpi-rgb-led-matrix/lib/bdf-font.cc

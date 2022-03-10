@@ -1,9 +1,9 @@
 #pragma once
-#include "page.h"
+#include "Page.h"
 
 class IPPage : public Page{
 public:
-    IPPage();
+    IPPage(canvas_ptr);
     virtual bool init();
     virtual void display();
     virtual void update(const std::string& name, const std::string& val);

@@ -4,6 +4,7 @@ TimePage::TimePage(canvas_ptr canvas) : Page(canvas) {}
 
 bool TimePage::init() {
 
+	return true;
 }
 
 void TimePage::display() {

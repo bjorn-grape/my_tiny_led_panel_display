@@ -1,6 +1,8 @@
 #pragma once
 #include <led-matrix.h>
 #include <memory>
+#include <unordered_map>
+#include "Page.h"
 
 enum DisplayType{
     STOP = 0,
@@ -18,7 +20,7 @@ public:
     auto loop() -> void;
     auto draw() -> void;
     auto stop() -> void;
-    auto set_page_name(const std::string& name) -> void;
+    auto set_page_name(const std::string& name) -> bool;
 
 private:
     auto set_display_type(DisplayType dt) -> void;

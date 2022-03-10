@@ -1,10 +1,13 @@
+#include <iostream>
 #include "IPPage.h"
 
 IPPage::IPPage(canvas_ptr canvas) : Page(canvas) {
-    length = rgb_matrix::DrawText(offscreen_canvas, font,
+   /* length = rgb_matrix::DrawText(offscreen_canvas, font,
                                   x, y + font.baseline(),
                                   color, nullptr,
                                   line.c_str(), letter_spacing);
+
+				  */
 }
 
 bool IPPage::init() {
@@ -17,7 +20,7 @@ bool IPPage::init() {
     if (!pipe)
     {
         std::cerr << "Couldn't start command." << std::endl;
-        return 0;
+        return false;
     }
     while (fgets(buffer.data(), 128, pipe) != NULL) {
         std::cout << "Reading..." << std::endl;
@@ -28,6 +31,8 @@ bool IPPage::init() {
     std::string delimiter = " ";
     std::string token = ip_line.substr(0, ip_line.find(delimiter));
     this->ip_address = token;
+
+    return true;
 }
 
 void IPPage::display() {
