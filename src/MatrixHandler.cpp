@@ -46,5 +46,6 @@ auto MatrixHandler::loop() -> void {
     {
         draw();
     }
+    canvas_->Clear();
 }
 

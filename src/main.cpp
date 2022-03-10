@@ -2,7 +2,9 @@
 #include <string>
 #include <signal.h>
 #include <functional>
+#include <thread>
 #include "MatrixHandler.h"
+#include "httplib.h"
 
 
 std::function<void(void)> InterruptHandler;
@@ -29,7 +31,7 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    std::thread t([&mh](){mh.loop()});
+    std::thread t([&mh](){mh.loop(); });
     t.detach();
 
     httplib::Server svr;
@@ -37,11 +39,22 @@ int main(int argc, char **argv) {
     svr.Get("/", [](const httplib::Request &, httplib::Response &res) {
         res.set_content("Hello World!", "text/plain");
     });
-    svr.Get(R"(/page/(\d+))", [&](const Request& req, Response& res) {
-        auto val = req.matches[0];
-        auto numbers = req.matches[1];
-        auto str_res  = val + "->" + numbers;
-        res.set_content(str_res, "text/plain");
+    svr.Get("/page/", [&](const httplib::Request& req, httplib::Response& res) {
+	std::string page_name = "None";
+	if (req.has_param("name"))
+	{
+		page_name = req.get_param_value("name"); 
+	}	
+	std::cout << "GET: /page/?name=" << page_name << "\n"; 
+	if(page_name == "stop"){
+		std::cout << "Stopping the server...";
+		mh.set_display_type(DisplayType::STOP);
+		svr.stop();
+	}
+	std::stringstream ss;
+	ss << "You selected: " << page_name;
+
+        res.set_content(ss.str(), "text/plain");
     });
 
     svr.listen("0.0.0.0", 8080);
