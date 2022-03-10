@@ -3,7 +3,10 @@ cmake_minimum_required(VERSION 3.10)
 
 project(raspi_led)
 
-include_directories(../3rdparty/rpi-rgb-led-matrix/include)
+include_directories(
+		../3rdparty/rpi-rgb-led-matrix/include
+		../3rdparty/cpp-httplib/
+)
 add_library(rpi_rgb_led_matrix SHARED
 	../3rdparty/rpi-rgb-led-matrix/lib/bdf-font.cc
 	../3rdparty/rpi-rgb-led-matrix/lib/led-matrix-c.cc
