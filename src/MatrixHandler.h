@@ -7,6 +7,8 @@ enum DisplayType{
     DEFAULT = 1,
 };
 
+typedef std::unordered_map<std::string, std::shared_ptr<Page>> pagemap;
+
 class MatrixHandler {
 
 public:
@@ -15,11 +17,15 @@ public:
     auto init(int argc, char **argv) -> bool;
     auto loop() -> void;
     auto draw() -> void;
-    auto set_display_type(DisplayType dt) -> void;
+    auto stop() -> void;
+    auto set_page_name(const std::string& name) -> void;
 
 private:
+    auto set_display_type(DisplayType dt) -> void;
     std::shared_ptr<rgb_matrix::RGBMatrix> canvas_;
     DisplayType s_display = DisplayType::DEFAULT;
     bool is_init_ = false;
+    pagemap pmap_;
+    std::string page_name_;
 };
 
