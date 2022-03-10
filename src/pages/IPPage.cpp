@@ -1,14 +1,9 @@
 #include <iostream>
 #include "IPPage.h"
+#include "graphics.h"
 
 IPPage::IPPage(canvas_ptr canvas) : Page(canvas) {
-   /* length = rgb_matrix::DrawText(offscreen_canvas, font,
-                                  x, y + font.baseline(),
-                                  color, nullptr,
-                                  line.c_str(), letter_spacing);
-
-				  */
-}
+   }
 
 bool IPPage::init() {
     std::string command("hostname -I");
@@ -36,7 +31,22 @@ bool IPPage::init() {
 }
 
 void IPPage::display() {
-    canvas_->Fill(255, 0, 0);
+    frame_canvas_->Fill(0, 100, 0);
+    rgb_matrix::Color color(255, 255, 255);
+    int  letter_spacing = 0;
+    std::string fontpath ="myfont.bdf"; 
+    rgb_matrix::Font font;
+    if (!font.LoadFont(fontpath.c_str()))
+    {
+    	canvas_->Fill(40,100,255);
+	return;
+    }
+    int length = rgb_matrix::DrawText(frame_canvas_, font,
+                                  30, 30,
+                                  color, nullptr,
+                                  ip_address.c_str(), letter_spacing);
+
+    canvas_->SwapOnVSync(frame_canvas_);
 }
 
 void IPPage::update(const std::string& name, const std::string& val){

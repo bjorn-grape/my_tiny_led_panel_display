@@ -12,4 +12,5 @@ public:
 
 protected:
     canvas_ptr canvas_;
+    rgb_matrix::FrameCanvas* frame_canvas_;
 };
