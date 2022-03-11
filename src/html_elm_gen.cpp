@@ -9,8 +9,8 @@ namespace html_elm_gen {
                      const std::string& url,
                      const std::string& key,
                      const std::string& value,
-                     unsigned height=100,
-                     unsigned width=100) -> std::string
+                     unsigned height,
+                     unsigned width) -> std::string
     {
         std::stringstream ss;
         ss << "<a href=\""
@@ -19,8 +19,8 @@ namespace html_elm_gen {
         << value
         << "\" >"
         << "<input type=\"submit\" style=\"height:" << height
-        << "%;width:" << width "%;\"> value=\"" << name << "\""
-        << "</button>"
+        << "%;width:" << width << "%;\" value=\"" << name << "\">"
+        << "</input>"
         << "</a>";
         return ss.str();
     }

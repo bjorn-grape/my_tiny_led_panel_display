@@ -17,14 +17,15 @@ namespace request_handler {
         if (page_name == "stop") {
             std::cout << "Stopping the server...";
             mh.stop();
-            svr.stop();
+            server.stop();
         }
         mh.set_page_name(page_name);
         std::stringstream ss;
 //        auto btn1 = html_elm_gen::make_button(ss.str(), "/page/", "name", "none", 20);
-        ss << html_elm_gen::make_button(ss.str(), "/page/", "name", "ip", 20);
-        ss << html_elm_gen::make_button(ss.str(), "/page/", "name", "time", 20);
-        res.set_content(ss.str(), "text/plain");
+        ss << html_elm_gen::make_button("STOP", "/page/", "name", "stop", 10);
+        ss << html_elm_gen::make_button("IP", "/page/", "name", "ip", 20);
+        ss << html_elm_gen::make_button("TIME", "/page/", "name", "time", 20);
+        res.set_content(ss.str(), "text/html");
     }
 
 }

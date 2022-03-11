@@ -27,6 +27,7 @@ add_executable(raspi_led
 		main.cpp
 		MatrixHandler.cpp
 		request_handler.cpp
+		html_elm_gen.cpp
 		pages/Page.cpp
 		pages/IPPage.cpp
 		pages/TimePage.cpp
