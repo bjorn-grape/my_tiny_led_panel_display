@@ -36,14 +36,11 @@ int main(int argc, char **argv) {
 
     httplib::Server svr;
 
-    svr.Get("/", [](const httplib::Request &, httplib::Response &res) {
-        res.set_content("Hello World!", "text/plain");
-    });
-    svr.Get("/page/", [&](const httplib::Request &req, httplib::Response &res) {
+    svr.Get("/", [&](const httplib::Request &req, httplib::Response &res) {
         request_handler::request_page(req, res, mh, svr);
     });
 
-    svr.listen("0.0.0.0", 8080);
+    svr.listen("0.0.0.0", PORT);
 
     return 0;
 }

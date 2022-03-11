@@ -1,6 +1,5 @@
 #pragma once
 
-class main {
+#define PORT 8080
 
-};
 

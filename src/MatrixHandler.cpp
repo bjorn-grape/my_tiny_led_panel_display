@@ -35,8 +35,9 @@ auto MatrixHandler::draw() -> void {
         canvas_->Fill(255, 255, 255);
         return;
     }
-
-    pmap_[page_name_]->display();
+    bool is_same_page = page_name_ ==  last_rendered_page_name;
+    pmap_[page_name_]->display(is_same_page);
+    last_rendered_page_name = page_name_;
 }
 
 auto MatrixHandler::set_display_type(DisplayType dt) -> void {
@@ -59,7 +60,7 @@ auto MatrixHandler::loop() -> void {
         return;
     while (s_display != DisplayType::STOP) {
         draw();
-        std::this_thread::sleep_for(1000ms);
+        std::this_thread::sleep_for(sleep_ms * 1ms);
     }
     canvas_->Clear();
 }

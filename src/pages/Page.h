@@ -7,7 +7,7 @@ class Page {
 public:
     Page(canvas_ptr canvas);
     virtual bool init() = 0;
-    virtual void display() = 0;
+    virtual void display(bool is_same_page) = 0;
     virtual void update(const std::string& name, const std::string& val) = 0;
 
 protected:

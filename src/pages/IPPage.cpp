@@ -30,7 +30,9 @@ bool IPPage::init() {
     return true;
 }
 
-void IPPage::display() {
+void IPPage::display(bool is_same_page) {
+    if (is_same_page)
+        return;
     frame_canvas_->Fill(0, 100, 0);
     rgb_matrix::Color color(255, 255, 255);
     int  letter_spacing = 0;

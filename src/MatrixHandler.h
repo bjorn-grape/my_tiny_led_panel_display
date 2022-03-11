@@ -4,6 +4,8 @@
 #include <unordered_map>
 #include "Page.h"
 
+
+
 enum DisplayType{
     STOP = 0,
     DEFAULT = 1,
@@ -29,5 +31,8 @@ private:
     bool is_init_ = false;
     pagemap pmap_;
     std::string page_name_ = "ip";
+    std::string last_rendered_page_name;
+    constexpr float fps = 60;
+    constexpr float sleep_ms = 1000 / fps;
 };
 

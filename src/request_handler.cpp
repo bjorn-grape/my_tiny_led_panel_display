@@ -22,9 +22,9 @@ namespace request_handler {
         mh.set_page_name(page_name);
         std::stringstream ss;
 //        auto btn1 = html_elm_gen::make_button(ss.str(), "/page/", "name", "none", 20);
-        ss << html_elm_gen::make_button("STOP", "/page/", "name", "stop", 10);
-        ss << html_elm_gen::make_button("IP", "/page/", "name", "ip", 20);
-        ss << html_elm_gen::make_button("TIME", "/page/", "name", "time", 20);
+        ss << html_elm_gen::make_button("STOP", "/", "name", "stop", 20, 33);
+        ss << html_elm_gen::make_button("IP", "/", "name", "ip", 20, 33);
+        ss << html_elm_gen::make_button("TIME", "/", "name", "time", 20, 33);
         res.set_content(ss.str(), "text/html");
     }
 
