@@ -6,6 +6,7 @@
 #include "MatrixHandler.h"
 #include "httplib.h"
 #include "request_handler.h"
+#include "main.h"
 
 std::function<void(void)> InterruptHandler;
 

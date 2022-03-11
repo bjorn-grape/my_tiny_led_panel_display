@@ -32,7 +32,7 @@ private:
     pagemap pmap_;
     std::string page_name_ = "ip";
     std::string last_rendered_page_name;
-    constexpr float fps = 60;
-    constexpr float sleep_ms = 1000 / fps;
+    const float fps = 60;
+    const float sleep_ms = 1000 / fps;
 };
 
