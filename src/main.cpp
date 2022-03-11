@@ -5,7 +5,7 @@
 #include <thread>
 #include "MatrixHandler.h"
 #include "httplib.h"
-
+#include "request_handler.h"
 
 std::function<void(void)> InterruptHandler;
 
@@ -40,21 +40,7 @@ int main(int argc, char **argv) {
         res.set_content("Hello World!", "text/plain");
     });
     svr.Get("/page/", [&](const httplib::Request &req, httplib::Response &res) {
-        std::string page_name = "None";
-        if (req.has_param("name")) {
-            page_name = req.get_param_value("name");
-        }
-        std::cout << "GET: /page/?name=" << page_name << "\n";
-        if (page_name == "stop") {
-            std::cout << "Stopping the server...";
-            mh.stop();
-            svr.stop();
-        }
-        mh.set_page_name(page_name);
-        std::stringstream ss;
-        ss << "You selected: " << page_name;
-
-        res.set_content(ss.str(), "text/plain");
+        request_handler::request_page(req, res, mh, svr);
     });
 
     svr.listen("0.0.0.0", 8080);

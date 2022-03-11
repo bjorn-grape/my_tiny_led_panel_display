@@ -26,6 +26,7 @@ add_library(rpi_rgb_led_matrix SHARED
 add_executable(raspi_led
 		main.cpp
 		MatrixHandler.cpp
+		request_handler.cpp
 		pages/Page.cpp
 		pages/IPPage.cpp
 		pages/TimePage.cpp

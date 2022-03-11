@@ -28,6 +28,6 @@ private:
     DisplayType s_display = DisplayType::DEFAULT;
     bool is_init_ = false;
     pagemap pmap_;
-    std::string page_name_;
+    std::string page_name_ = "ip";
 };
 
