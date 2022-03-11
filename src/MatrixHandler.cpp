@@ -24,6 +24,7 @@ auto MatrixHandler::init(int argc, char **argv) -> bool {
     canvas_ = std::shared_ptr<rgb_matrix::RGBMatrix>(tmp_ptr);
     pmap_["ip"] = std::make_shared<IPPage>(canvas_);
     pmap_["time"] = std::make_shared<TimePage>(canvas_);
+    pmap_["bus"] = std::make_shared<BusPage>(canvas_);
     for (auto &elm : pmap_)
     elm.second->init();
     is_init_ = true;
@@ -52,6 +53,13 @@ auto MatrixHandler::set_page_name(const std::string &name) -> bool {
     if (!pmap_.count(name))
         return false;
     page_name_ = name;
+    return true;
+}
+
+auto MatrixHandler::set_modifier(const std::string &name) -> bool {
+    if (!pmap_.count("bus"))
+        return false;
+    pmap_["bus"].update("modifier", name);
     return true;
 }
 
