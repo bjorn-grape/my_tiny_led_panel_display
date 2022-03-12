@@ -4,6 +4,7 @@
 #include "pages/Page.h"
 #include "pages/IPPage.h"
 #include "pages/TimePage.h"
+#include "pages/BusPage.h"
 
 using namespace std::chrono_literals;
 
@@ -59,7 +60,7 @@ auto MatrixHandler::set_page_name(const std::string &name) -> bool {
 auto MatrixHandler::set_modifier(const std::string &name) -> bool {
     if (!pmap_.count("bus"))
         return false;
-    pmap_["bus"].update("modifier", name);
+    pmap_["bus"]->update("modifier", name);
     return true;
 }
 

@@ -2,18 +2,24 @@
 BusPage::BusPage(canvas_ptr canvas) : Page(canvas) {}
 
 bool BusPage::init() {
-    data.emplace_back({"3", 4, 45});
-    data.emplace_back({"3", 6, 15});
-    data.emplace_back({"3", 7, 23});
-    data.emplace_back({"3", 8, 25});
-    data.emplace_back({"2", 1, 25});
-    data.emplace_back({"2", 4, 25});
-    data.emplace_back({"2", 6, 25});
+    std::string tram2 = "T2";
+    std::string tram3 = "T3";
+    data.emplace_back(tram3, 4, 45);
+    data.emplace_back(tram3, 6, 15);
+    data.emplace_back(tram3, 7, 23);
+    data.emplace_back(tram3, 8, 25);
+    data.emplace_back(tram2, 1, 25);
+    data.emplace_back(tram2, 4, 25);
+    data.emplace_back(tram2, 6, 25);
     return true;
 }
 
 auto format_data(const BusData& bdt) -> std::string {
-
+    std::stringstream ss;
+    ss << "[" << bdt.name << "]"
+       << " in " << bdt.hour << "h"
+       << bdt.min;
+    return ss.str();
 }
 
 void BusPage::display(bool is_same_page) {
@@ -30,7 +36,7 @@ void BusPage::display(bool is_same_page) {
         canvas_->Fill(40,100,255);
         return;
     }
-    for (unsigned i = 0; i < entry_per_page, i++)
+    for (unsigned i = 0; i < entry_per_page; i++)
     {
         auto f_data = format_data(data[index + i]);
         rgb_matrix::DrawText(frame_canvas_, font,

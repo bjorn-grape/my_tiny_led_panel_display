@@ -23,6 +23,8 @@ add_library(rpi_rgb_led_matrix SHARED
 	../3rdparty/rpi-rgb-led-matrix/lib/hardware-mapping.c
 	)
 
+set(CMAKE_CSS_FLAGS_INIT "-Wall -Wextra -Wpedantic")
+
 add_executable(raspi_led
 		main.cpp
 		MatrixHandler.cpp
@@ -31,6 +33,7 @@ add_executable(raspi_led
 		pages/Page.cpp
 		pages/IPPage.cpp
 		pages/TimePage.cpp
+		pages/BusPage.cpp
 		)
 
 target_link_libraries(raspi_led rpi_rgb_led_matrix pthread rt m)

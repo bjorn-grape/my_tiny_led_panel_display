@@ -14,6 +14,12 @@ namespace request_handler {
             std::string page_name = "None";
             page_name = req.get_param_value("name");
             mh.set_page_name(page_name);
+        std::cout << "GET: /page/?name=" << page_name << "\n";
+	    if (page_name == "stop") {
+                std::cout << "Stopping the server...";
+                mh.stop();
+                server.stop();
+            }
         }
 
         if (req.has_param("modifier")) {
@@ -21,12 +27,7 @@ namespace request_handler {
             modifier = req.get_param_value("modifier");
             mh.set_modifier(modifier);
         }
-        std::cout << "GET: /page/?name=" << page_name << "\n";
-        if (page_name == "stop") {
-            std::cout << "Stopping the server...";
-            mh.stop();
-            server.stop();
-        }
+        
 
         std::stringstream ss;
 //        auto btn1 = html_elm_gen::make_button(ss.str(), "/page/", "name", "none", 20);

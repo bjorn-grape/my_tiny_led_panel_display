@@ -23,6 +23,7 @@ public:
     auto draw() -> void;
     auto stop() -> void;
     auto set_page_name(const std::string& name) -> bool;
+    auto set_modifier(const std::string& name) -> bool ;
 
 private:
     auto set_display_type(DisplayType dt) -> void;
