@@ -36,9 +36,9 @@ bool IPPage::init() {
 }
 
 void IPPage::display(bool is_same_page) {
-    //if (is_same_page)
-    //        return;
-    frame_canvas_->Fill(0, 100, 0);
+    if (is_same_page)
+            return;
+
     rgb_matrix::Color color(255, 255, 255);
     int  letter_spacing = 0;
     std::string fontpath ="myfont.bdf"; 
@@ -48,6 +48,7 @@ void IPPage::display(bool is_same_page) {
     	canvas_->Fill(40,100,255);
 	    return;
     }
+    frame_canvas_->Fill(0, 100, 0);
     int length = rgb_matrix::DrawText(frame_canvas_, font,
                                   30, 30,
                                   color, nullptr,

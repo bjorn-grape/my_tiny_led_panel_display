@@ -19,7 +19,7 @@ void TimePage::display(bool is_same_page) {
         return;
     }
 
-    canvas_->Fill(0, 100, 0);
+    frame_canvas_->Fill(100, 0, 0);
     time_t now = time(0);
     struct tm tstruct;
     char buf[80];
@@ -31,6 +31,7 @@ void TimePage::display(bool is_same_page) {
                          30, 30,
                          color, nullptr,
                          buf, letter_spacing);
+    canvas_->SwapOnVSync(frame_canvas_);
 }
 
 void TimePage::update(const std::string &name, const std::string &val) {
