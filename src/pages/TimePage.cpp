@@ -24,11 +24,11 @@ void TimePage::display(bool is_same_page) {
     struct tm tstruct;
     char buf[80];
     tstruct = *localtime(&now);
-    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+    strftime(buf, sizeof(buf), "%Y-%m-%d  %X", &tstruct);
     rgb_matrix::Color color(255, 255, 255);
-    std::cout << buf << std::endl;
+//    std::cout << buf << std::endl;
     rgb_matrix::DrawText(frame_canvas_, font,
-                         30, 30,
+                         10, 10,
                          color, nullptr,
                          buf, letter_spacing);
     canvas_->SwapOnVSync(frame_canvas_);
