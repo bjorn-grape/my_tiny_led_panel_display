@@ -34,6 +34,7 @@ add_executable(raspi_led
 		pages/IPPage.cpp
 		pages/TimePage.cpp
 		pages/BusPage.cpp
+		data/bus_data.cpp
 		)
 
 target_link_libraries(raspi_led rpi_rgb_led_matrix pthread rt m)
