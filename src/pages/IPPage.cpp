@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include "../main.h"
 #include "IPPage.h"
 #include "graphics.h"
 
@@ -25,7 +27,10 @@ bool IPPage::init() {
     auto ip_line = std::string(result);
     std::string delimiter = " ";
     std::string token = ip_line.substr(0, ip_line.find(delimiter));
-    this->ip_address = token;
+    std::stringstream ss;
+    ss << token << ":" << PORT;
+
+    this->ip_address = ss.str();
 
     return true;
 }
@@ -41,7 +46,7 @@ void IPPage::display(bool is_same_page) {
     if (!font.LoadFont(fontpath.c_str()))
     {
     	canvas_->Fill(40,100,255);
-	return;
+	    return;
     }
     int length = rgb_matrix::DrawText(frame_canvas_, font,
                                   30, 30,
